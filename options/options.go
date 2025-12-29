@@ -31,7 +31,7 @@ func ParseOptions(Args []string) (*CommandsOption, error) {
 	app.VersionFlag.Short('v')
 
 	command := NewCommands()
-	command.GlobalCommand.Url = app.Flag("url", "oracle connect url string").Short('u').Required().String()
+	command.GlobalCommand.Url = app.Flag("url", "oracle connect url string").Short('u').Required().Default("user/password@127.0.0.1:1521/orcl").String()
 	command.GlobalCommand.Query = app.Flag("query", "sql query").Short('q').Default("select 1 from dual").String()
 	command.GlobalCommand.Timeout = app.Flag("timeout", "query sql timeout").Short('t').Default("32").Int()
 	command.GlobalCommand.ConnectTimeout = app.Flag("connect-timeout", "connect to oracle timeout").Short('c').Default("6").Int()
